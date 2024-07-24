@@ -2,10 +2,10 @@
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
-import Loading from "@/app/loading";
 import typeList from "@/json/onboardingType.json";
 import Image from "next/image";
 import Link from "next/link";
+import TypeLoading from "./typeLoading";
 
 interface type {
   id: string;
@@ -34,7 +34,7 @@ export default function MyType() {
   const description = myType?.description;
 
   return loading ? (
-    <Loading />
+    <TypeLoading />
   ) : (
     <div className="relative h-screen w-full overflow-hidden">
       <div className="flex h-[calc(100vh-80px)] w-full flex-col items-center overflow-y-auto px-5 pb-6">
@@ -50,8 +50,8 @@ export default function MyType() {
         <div className="mt-10">
           <Image
             src={myType?.image as string}
-            width={200}
-            height={210}
+            width={244}
+            height={256}
             alt="type"
           />
         </div>
