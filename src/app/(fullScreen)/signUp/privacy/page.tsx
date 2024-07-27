@@ -23,7 +23,15 @@ export default function Privacy() {
   const inputRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
 
-  const { register, handleSubmit, watch } = useForm<Privacy>();
+  const { register, handleSubmit, watch } = useForm<Privacy>({
+    defaultValues: {
+      email: "",
+      password: "",
+      name: "",
+      birth: "",
+      nickname: "",
+    },
+  });
 
   // TODO
   async function onSubmit(data: any) {

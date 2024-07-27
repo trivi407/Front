@@ -4,8 +4,6 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 export default function SignUp() {
-  const router = useRouter();
-
   return (
     <div className="relative flex h-screen w-full flex-col items-center justify-center">
       <h1 className="mb-5 text-2xl font-semibold text-[#226AFA]">

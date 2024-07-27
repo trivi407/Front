@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { useRef, useState } from "react";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 import axios from "axios";
@@ -19,7 +18,9 @@ interface Privacy {
 
 export default function Login() {
   const router = useRouter();
-  const { register, handleSubmit, watch } = useForm<Privacy>();
+  const { register, handleSubmit, watch } = useForm<Privacy>({
+    defaultValues: { email: "", password: "" },
+  });
 
   async function onSubmit(data: any) {
     try {
@@ -29,6 +30,7 @@ export default function Login() {
       );
 
       if (response.status === 200) {
+        window.localStorage.setItem("session", response.data.sessionId);
         router.push("/home");
       }
     } catch (error) {
