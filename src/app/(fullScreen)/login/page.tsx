@@ -18,17 +18,19 @@ interface Privacy {
 }
 
 export default function Login() {
+  const router = useRouter();
   const { register, handleSubmit, watch } = useForm<Privacy>();
 
   async function onSubmit(data: any) {
-    console.log(data);
     try {
       const response = await axios.post(
         `${process.env.NEXT_PUBLIC_SERVER_API}/api/v1/users/login `,
         data,
       );
 
-      console.log(response);
+      if (response.status === 200) {
+        router.push("/home");
+      }
     } catch (error) {
       console.error(error);
     }

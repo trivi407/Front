@@ -36,7 +36,9 @@ export default function Privacy() {
         },
       );
 
-      return router.push("/signUp/success");
+      if (response.status === 200) {
+        router.push("/signUp/success");
+      }
     } catch (error) {
       console.error(error);
     }
